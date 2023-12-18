@@ -1,3 +1,29 @@
+# Terminal Comment
+
+work-directory$ nest new <project-name>
+
+# Now in another directory:
+
+tutorial-directory$ some-terminal-command [option=<your-value>]
+
+```
+
+
+```
+
+On this github repository root page, click on the green 1"code" dropdown, and copy the link to the repo.
+
+In the parent directory to where you want your projects to go,
+
+git checkout master
+
+# after reading this...
+
+tutorial-directory$ git checkout step-1-authentication
+
+````
+
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
@@ -30,7 +56,7 @@
 
 ```bash
 $ npm install
-```
+````
 
 ## Running the app
 
