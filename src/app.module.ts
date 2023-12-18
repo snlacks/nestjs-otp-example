@@ -1,10 +1,34 @@
-import { Module } from '@nestjs/common';
+import { ConsoleLogger, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthModule } from './auth/auth.module';
+import { UsersHTTPModule } from './users/usershttp.module';
+import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { ConfigModule } from '@nestjs/config';
+
+const TypeOrmModuleForRoot = TypeOrmModule.forRootAsync({
+  useFactory: () => ({
+    type: 'mysql',
+    host: process.env.DB_HOST,
+    port: Number(process.env.DB_PORT),
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
+    entities: [],
+    synchronize: true,
+    autoLoadEntities: true,
+  }),
+});
 
 @Module({
-  imports: [],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ConsoleLogger],
+  imports: [
+    AuthModule,
+    UsersHTTPModule,
+    UsersHTTPModule,
+    ConfigModule.forRoot(),
+    TypeOrmModuleForRoot,
+  ],
 })
 export class AppModule {}
